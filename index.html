@@ -9,6 +9,7 @@
 </head>
 <body>
     <div id="container">
+        <h1>Library</h1>
         <table id="library-table">
             <tr id="table-top">
                 <td class="title">Title</td>
@@ -16,12 +17,24 @@
                 <td class="page-count">Page Count</td>
                 <td class="read">Read</td>
             </tr>
+            <tr>
+                <form>
+                    <td class="title">
+                        <input type="text" name="title">
+                    </td>
+                    <td class="author">
+                        <input type="text" name="author">
+                    </td>
+                    <td class="page-count">
+                        <input type="number" name="page-count">
+                    </td>
+                    <td class="read">
+                        <input type="checkbox" name="read">
+                    </td>
+                    <input class="form-submit" type="submit" value="Submit">
+                </form>
+            </tr>
         </table>
-        <div class="book-title"></div>
-            <form>
-                <input type="text" name="title" value="Hi">
-                <input type="submit" value="Submit">
-            </form>
     </div>
 
 

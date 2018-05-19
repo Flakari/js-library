@@ -4,18 +4,23 @@
 
 #container {
     margin: auto;
-    background-color: red;
     height: 200px;
     width: 1000px;
+}
+
+h1 {
+    font-size: 2.5rem;
 }
 
 #container table {
     width: 100%;
     text-align: center;
+    background-color: red;
 }
 
 #table-top {
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .title {
@@ -32,4 +37,11 @@
 
 .read {
     width: 15%;
+}
+
+.form-submit {
+    display: inline;
+    position: relative;
+    left: 1015px;
+    top: 40px;
 }
