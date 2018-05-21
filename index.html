@@ -11,12 +11,12 @@
     <div id="container">
         <h1>Library</h1>
         <table id="library-table">
-            <tr id="table-top">
-                <td class="title">Title</td>
-                <td class="author">Author</td>
-                <td class="page-count">Page Count</td>
-                <td class="read">Read</td>
-            </tr>
+            <thead>
+                <th class="title">Title</th>
+                <th class="author">Author</th>
+                <th class="page-count">Page Count</th>
+                <th class="read">Read</th>
+            </thead>
             <tr>
                 <form>
                     <td class="title">
@@ -33,6 +33,12 @@
                     </td>
                     <input class="form-submit" type="submit" value="Submit">
                 </form>
+            </tr>
+            <tr>
+                <td class="title">Game of Thrones</td>
+                <td class="author">George R.R. Martin</td>
+                <td class="page-count">694</td>
+                <td class="read"><input type="checkbox" name="read" checked></td>
             </tr>
         </table>
     </div>
