@@ -1,6 +1,7 @@
 let libraryTable = document.querySelector('#library-table');
 let libraryBody = libraryTable.querySelector('tbody');
 let formSubmit = document.querySelector('.form-submit');
+let libraryCheckBox = libraryBody.querySelectorAll('input[type=checkbox]');
 
 let myLibrary = [];
 
@@ -53,8 +54,15 @@ formSubmit.addEventListener('click', function(e) {
     bookData[4].checked = false;
 });
 
+libraryCheckBox.forEach(check => {
+    check.addEventListener('click', function(e) {
+        console.log([].indexOf.call(libraryCheckBox, e.target));
+    });
+});
+
 let newBook = new Book('Game of Thrones', 'George R.R. Martin', 500, true);
 addBookToLibrary(newBook);
 newBook = new Book('Expendables', 'Slyvester Stallone', 300, true);
 addBookToLibrary(newBook);
 console.log(myLibrary);
+console.log(libraryCheckBox);
