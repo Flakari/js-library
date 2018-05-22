@@ -38,7 +38,14 @@ function newBookRender(newBook) {
     }
 }
 
+function tableReset() {
+    while (libraryBody.children[1]) {
+        libraryBody.removeChild(libraryBody.children[1]);
+    }
+}
+
 function fullRender() {
+    tableReset();
     for(let i = myLibrary.length - 2; i >= 0; i--) {
         newBookRender(myLibrary[i]);
     }
@@ -56,27 +63,27 @@ formSubmit.addEventListener('click', function(e) {
     let newBook = new Book(bookData[0].value, bookData[1].value, bookData[2].value, bookData[3].checked, myLibrary[0].id + 1);
     console.log(newBook);
     addBookToLibrary(newBook);
-    newBookRender(newBook);
-    //checkboxUpdate();
     console.log(myLibrary);
     for (let i = 0; i < bookData.length; i++) {
         bookData[i].value = '';
     }
     bookData[3].checked = false;
+    fullRender();
+    checkboxUpdate();
 });
 
-/*function checkboxUpdate() {
+function checkboxUpdate() {
     let libraryCheckBox = libraryBody.getElementsByClassName('read-check');
     console.log(libraryCheckBox);
-    checkboxList = [];
+    let checkboxList = [];
     checkboxList = Array.from(libraryCheckBox);
-    console.log(checkboxList);
     checkboxList.forEach(check => {
         check.addEventListener('click', function(e) {
-            console.log(checkboxList.indexOf(e.target));
+            console.log(e.target.parentElement.parentElement.getAttribute('data-id'));
         });
     });
-}*/
+}
 
 console.log(myLibrary);
 window.onload = fullRender();
+window.onload = checkboxUpdate();
