@@ -1,22 +1,24 @@
 let libraryTable = document.querySelector('#library-table');
 let libraryBody = libraryTable.querySelector('tbody');
 let formSubmit = document.querySelector('.form-submit');
-let libraryCheckBox = libraryBody.querySelectorAll('input[type=checkbox]');
+let newBookForm = document.querySelector('#new-book-form');
 
-let myLibrary = [];
+let myLibrary = [new Book('Gardens of the Moon', 'Steven Erikson', 712, false, 1), new Book('Game of Thrones', 'George R.R. Martin', 694, true, 0), new Book('','',0,false,-1)];
+let checkboxList = [];
 
-function Book(title, author, pageCount, read) {
+function Book(title, author, pageCount, read, id) {
     this.title = title;
     this.author = author;
     this.pageCount = pageCount;
     this.read = read;
+    this.id = id;
 }
 
 function addBookToLibrary(newBook) {
     myLibrary.unshift(newBook);
 }
 
-function render() {
+function newBookRender(newBook) {
     let objName = ['title', 'author', 'pageCount', 'read'];
     let objValue = [newBook.title, newBook.author, newBook.pageCount, newBook.read];
     let tableRow = libraryBody.insertRow(1);
@@ -24,7 +26,7 @@ function render() {
         let tableCell = tableRow.insertCell(i);
         tableCell.setAttribute('class', objName[i]);
         if (i == 3) {
-            tableCell.innerHTML = '<input type="checkbox" name=' + objName[3] + '>';
+            tableCell.innerHTML = '<input type="checkbox" name=' + objName[3] + ' class="read-check">';
             if (objValue[3] == true) {
                 let cellCheck = tableCell.querySelector('input');
                 cellCheck.checked = true;
@@ -36,33 +38,37 @@ function render() {
 }
 
 formSubmit.addEventListener('click', function(e) {
-    let bookData = document.getElementsByTagName('input');
+    let bookData = newBookForm.getElementsByTagName('input');
     
-    if(bookData[3].checkValidity()) {
+    if(bookData[2].checkValidity()) {
         e.preventDefault();
     } else {
         return false;
     }
-
-    newBook = new Book(bookData[1].value, bookData[2].value, bookData[3].value, bookData[4].checked);
+    
+    let newBook = new Book(bookData[0].value, bookData[1].value, bookData[2].value, bookData[3].checked, myLibrary[0].id + 1);
+    console.log(newBook);
     addBookToLibrary(newBook);
-    render();
+    newBookRender(newBook);
+    //checkboxUpdate();
     console.log(myLibrary);
-    for (let i = 1; i < bookData.length - 1; i++) {
+    for (let i = 0; i < bookData.length; i++) {
         bookData[i].value = '';
     }
-    bookData[4].checked = false;
+    bookData[3].checked = false;
 });
 
-libraryCheckBox.forEach(check => {
-    check.addEventListener('click', function(e) {
-        console.log([].indexOf.call(libraryCheckBox, e.target));
+/*function checkboxUpdate() {
+    let libraryCheckBox = libraryBody.getElementsByClassName('read-check');
+    console.log(libraryCheckBox);
+    checkboxList = [];
+    checkboxList = Array.from(libraryCheckBox);
+    console.log(checkboxList);
+    checkboxList.forEach(check => {
+        check.addEventListener('click', function(e) {
+            console.log(checkboxList.indexOf(e.target));
+        });
     });
-});
+}*/
 
-let newBook = new Book('Game of Thrones', 'George R.R. Martin', 500, true);
-addBookToLibrary(newBook);
-newBook = new Book('Expendables', 'Slyvester Stallone', 300, true);
-addBookToLibrary(newBook);
 console.log(myLibrary);
-console.log(libraryCheckBox);
