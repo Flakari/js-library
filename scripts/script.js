@@ -22,6 +22,7 @@ function newBookRender(newBook) {
     let objName = ['title', 'author', 'pageCount', 'read'];
     let objValue = [newBook.title, newBook.author, newBook.pageCount, newBook.read];
     let tableRow = libraryBody.insertRow(1);
+    tableRow.setAttribute('data-id', newBook.id);
     for (let i = 0; i < objName.length; i++) {
         let tableCell = tableRow.insertCell(i);
         tableCell.setAttribute('class', objName[i]);
@@ -34,6 +35,12 @@ function newBookRender(newBook) {
             return;
         }
         tableCell.innerText = objValue[i];
+    }
+}
+
+function fullRender() {
+    for(let i = myLibrary.length - 2; i >= 0; i--) {
+        newBookRender(myLibrary[i]);
     }
 }
 
@@ -72,3 +79,4 @@ formSubmit.addEventListener('click', function(e) {
 }*/
 
 console.log(myLibrary);
+window.onload = fullRender();
