@@ -79,7 +79,13 @@ function checkboxUpdate() {
     checkboxList = Array.from(libraryCheckBox);
     checkboxList.forEach(check => {
         check.addEventListener('click', function(e) {
-            console.log(e.target.parentElement.parentElement.getAttribute('data-id'));
+            let dataID = e.target.parentElement.parentElement.getAttribute('data-id');
+            let idFilter = myLibrary.filter(book => book.id == dataID);
+            if (e.target.checked == true) {
+                idFilter[0].read = true;
+            } else {
+                idFilter[0].read = false;
+            }
         });
     });
 }
