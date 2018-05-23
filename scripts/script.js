@@ -1,10 +1,13 @@
 let libraryTable = document.querySelector('#library-table');
 let libraryBody = libraryTable.querySelector('tbody');
 let formSubmit = document.querySelector('.form-submit');
+let submitContainer = document.querySelector('#form-submit-container');
 let newBookForm = document.querySelector('#new-book-form');
+let addBook = document.querySelector('#add-book');
 
 let myLibrary = [new Book('Gardens of the Moon', 'Steven Erikson', 712, false, 1), new Book('Game of Thrones', 'George R.R. Martin', 694, true, 0), new Book('','',0,false,-1)];
 let checkboxList = [];
+let addBookPos = 60;
 
 function Book(title, author, pageCount, read, id) {
     this.title = title;
@@ -70,6 +73,9 @@ formSubmit.addEventListener('click', function(e) {
     bookData[3].checked = false;
     fullRender();
     checkboxUpdate();
+    newBookForm.style.visibility = 'collapse';
+    formSubmit.style.visibility = 'hidden';
+    //addBook.style.bottom = addBookPos + 'px';
 });
 
 function checkboxUpdate() {
@@ -89,6 +95,21 @@ function checkboxUpdate() {
         });
     });
 }
+
+addBook.addEventListener('click', function() {
+    newBookForm.style.visibility = 'visible';
+    formSubmit.style.visibility = 'visible';
+})
+
+submitContainer.addEventListener('mouseover', function() {
+    newBookForm.style.backgroundColor = 'rgb(247, 247, 247)';
+});
+
+submitContainer.addEventListener('mouseleave', function() {
+    newBookForm.style.backgroundColor = '';
+})
+
+
 
 console.log(myLibrary);
 window.onload = fullRender();
