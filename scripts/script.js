@@ -4,6 +4,7 @@ let formSubmit = document.querySelector('.form-submit');
 let submitContainer = document.querySelector('#form-submit-container');
 let newBookForm = document.querySelector('#new-book-form');
 let addBook = document.querySelector('#add-book');
+let deleteButtonContainer = document.querySelector('#delete-button-container');
 
 let myLibrary = [new Book('Gardens of the Moon', 'Steven Erikson', 712, false, 1), new Book('Game of Thrones', 'George R.R. Martin', 694, true, 0), new Book('','',0,false,-1)];
 let checkboxList = [];
@@ -45,12 +46,17 @@ function tableReset() {
     while (libraryBody.children[1]) {
         libraryBody.removeChild(libraryBody.children[1]);
     }
+
+    while (deleteButtonContainer.children[0]) {
+        deleteButtonContainer.removeChild(deleteButtonContainer.children[0]);
+    }
 }
 
 function fullRender() {
     tableReset();
     for(let i = myLibrary.length - 2; i >= 0; i--) {
         newBookRender(myLibrary[i]);
+        deleteButtonRender(myLibrary[i]);
     }
 }
 
@@ -75,7 +81,6 @@ formSubmit.addEventListener('click', function(e) {
     checkboxUpdate();
     newBookForm.style.visibility = 'collapse';
     formSubmit.style.visibility = 'hidden';
-    //addBook.style.bottom = addBookPos + 'px';
 });
 
 function checkboxUpdate() {
@@ -94,6 +99,19 @@ function checkboxUpdate() {
             }
         });
     });
+}
+
+function deleteButtonRender(newBook) {
+    let deleteButton = document.createElement('button');
+    deleteButtonContainer.appendChild(deleteButton);
+    deleteButton.setAttribute('data-id', newBook.id);
+    deleteButtonContainer.insertBefore(deleteButton, deleteButtonContainer.childNodes[0]);
+    deleteButton.innerHTML = '&#10060;';
+    deleteButton.classList.add('delete-button');
+}
+
+function deleteBook() {
+
 }
 
 addBook.addEventListener('click', function() {

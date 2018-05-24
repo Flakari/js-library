@@ -9,36 +9,38 @@
 </head>
 <body>
     <div id="container">
-        <h1>Library</h1>
-        <div id="add-book"><div id="plus-sign"></div></div>
-        <table id="library-table">
-            <thead>
-                <th class="title">Title</th>
-                <th class="author">Author</th>
-                <th class="page-count">Page Count</th>
-                <th class="read">Read</th>
-            </thead>
-            <tr id="new-book-form">
-                <form>
-                    <td class="title">
-                        <input type="text" name="title">
-                    </td>
-                    <td class="author">
-                        <input type="text" name="author">
-                    </td>
-                    <td class="page-count">
-                        <input type="number" name="page-count">
-                    </td>
-                    <td class="read">
-                        <input type="checkbox" name="read">
-                    </td>
-                    <div id="form-submit-container"><input class="form-submit" type="submit" value="Submit"></div>
-                </form>
-            </tr>
-        </table>
+        <div id="delete-button-container">
+        </div>
+        <div id="table-container">
+            <h1>Library</h1>
+            <div id="add-book"><div id="plus-sign"></div></div>
+            <table id="library-table">
+                <thead>
+                    <th class="title">Title</th>
+                    <th class="author">Author</th>
+                    <th class="page-count">Page Count</th>
+                    <th class="read">Read</th>
+                </thead>
+                <tr id="new-book-form">
+                    <form>
+                        <td class="title">
+                            <input type="text" name="title">
+                        </td>
+                        <td class="author">
+                            <input type="text" name="author">
+                        </td>
+                        <td class="page-count">
+                            <input type="number" name="page-count">
+                        </td>
+                        <td class="read">
+                            <input type="checkbox" name="read">
+                        </td>
+                        <div id="form-submit-container"><input class="form-submit" type="submit" value="Submit"></div>
+                    </form>
+                </tr>
+            </table>
+        </div>
     </div>
-
-
     <script type="text/javascript" src="scripts/script.js"></script>
 </body>
 </html>
