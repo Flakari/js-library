@@ -14,6 +14,8 @@
     margin: auto;
     width: 90%;
     max-width: 1000px;
+    position: relative;
+    bottom: 43px;
 }
 
 #delete-button-container {
@@ -22,7 +24,7 @@
     width: 52px;
     position: relative;
     left: 95%;
-    top: 193px;
+    top: 151px;
 }
 
 .delete-button {
@@ -31,8 +33,13 @@
     background-color: #ffffff;
     border: none;
     margin-top: 1px;
-    margin-bottom: 4.2px;
+    margin-bottom: 4.1px;
     color: red;
+    opacity: 0.2;
+}
+
+.delete-button:hover {
+    opacity: 1;
 }
 
 h1 {
@@ -118,6 +125,11 @@ h1 {
     display: inline-block;
     right: 38px;
     top: 99px;
+    opacity: 0.6;
+}
+
+#add-book:hover {
+    opacity: 1;
 }
 
 #plus-sign {

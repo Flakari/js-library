@@ -6,9 +6,8 @@ let newBookForm = document.querySelector('#new-book-form');
 let addBook = document.querySelector('#add-book');
 let deleteButtonContainer = document.querySelector('#delete-button-container');
 
-let myLibrary = [new Book('Gardens of the Moon', 'Steven Erikson', 712, false, 1), new Book('Game of Thrones', 'George R.R. Martin', 694, true, 0), new Book('','',0,false,-1)];
+let myLibrary = [new Book('Old Man\'s War', 'John Scalzi', 320, false, 2), new Book('Gardens of the Moon', 'Steven Erikson', 712, false, 1), new Book('Game of Thrones', 'George R.R. Martin', 694, true, 0), new Book('','',0,false,-1)];
 let checkboxList = [];
-let addBookPos = 60;
 
 function Book(title, author, pageCount, read, id) {
     this.title = title;
@@ -70,23 +69,22 @@ formSubmit.addEventListener('click', function(e) {
     }
     
     let newBook = new Book(bookData[0].value, bookData[1].value, bookData[2].value, bookData[3].checked, myLibrary[0].id + 1);
-    console.log(newBook);
     addBookToLibrary(newBook);
-    console.log(myLibrary);
+
     for (let i = 0; i < bookData.length; i++) {
         bookData[i].value = '';
     }
+
     bookData[3].checked = false;
     fullRender();
     checkboxUpdate();
     newBookForm.style.visibility = 'collapse';
     formSubmit.style.visibility = 'hidden';
-    deleteButtonContainer.style.top = 193 + 'px';
+    deleteButtonContainer.style.top = 151 + 'px';
 });
 
 function checkboxUpdate() {
     let libraryCheckBox = libraryBody.getElementsByClassName('read-check');
-    console.log(libraryCheckBox);
     let checkboxList = [];
     checkboxList = Array.from(libraryCheckBox);
     checkboxList.forEach(check => {
@@ -121,7 +119,7 @@ function deleteButtonRender(newBook) {
 addBook.addEventListener('click', function() {
     newBookForm.style.visibility = 'visible';
     formSubmit.style.visibility = 'visible';
-    deleteButtonContainer.style.top = 254 + 'px';
+    deleteButtonContainer.style.top = 212 + 'px';
 })
 
 submitContainer.addEventListener('mouseover', function() {
@@ -132,8 +130,5 @@ submitContainer.addEventListener('mouseleave', function() {
     newBookForm.style.backgroundColor = '';
 })
 
-
-
-console.log(myLibrary);
 window.onload = fullRender();
 window.onload = checkboxUpdate();
