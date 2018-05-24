@@ -81,6 +81,7 @@ formSubmit.addEventListener('click', function(e) {
     checkboxUpdate();
     newBookForm.style.visibility = 'collapse';
     formSubmit.style.visibility = 'hidden';
+    deleteButtonContainer.style.top = 193 + 'px';
 });
 
 function checkboxUpdate() {
@@ -108,15 +109,19 @@ function deleteButtonRender(newBook) {
     deleteButtonContainer.insertBefore(deleteButton, deleteButtonContainer.childNodes[0]);
     deleteButton.innerHTML = '&#10060;';
     deleteButton.classList.add('delete-button');
-}
-
-function deleteBook() {
-
+    deleteButton.addEventListener('click', function(e) {
+        let dataID = e.target.getAttribute('data-id');
+        let idFilter = myLibrary.filter(book => book.id == dataID);
+        let index = myLibrary.indexOf(idFilter[0]);
+        myLibrary.splice(index, 1);
+        fullRender();
+    });
 }
 
 addBook.addEventListener('click', function() {
     newBookForm.style.visibility = 'visible';
     formSubmit.style.visibility = 'visible';
+    deleteButtonContainer.style.top = 254 + 'px';
 })
 
 submitContainer.addEventListener('mouseover', function() {
