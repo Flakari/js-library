@@ -58,6 +58,10 @@ function fullRender() {
     if (myLibrary == null || myLibrary == []) {
         myLibrary = [new Book('','',0,false,-1)];
     }
+    if (myLibrary.length == 1) {
+        newBookForm.style.visibility = 'visible';
+        formSubmit.style.visibility = 'visible';
+    }
     tableReset();
     for(let i = myLibrary.length - 2; i >= 0; i--) {
         newBookRender(myLibrary[i]);
