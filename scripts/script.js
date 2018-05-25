@@ -52,6 +52,12 @@ function tableReset() {
 }
 
 function fullRender() {
+    if (typeof(Storage) !== 'undefined') {
+        myLibrary = JSON.parse(localStorage.getItem('library'));
+    }
+    if (myLibrary == null || myLibrary == []) {
+        myLibrary = [new Book('','',0,false,-1)];
+    }
     tableReset();
     for(let i = myLibrary.length - 2; i >= 0; i--) {
         newBookRender(myLibrary[i]);
@@ -76,6 +82,10 @@ formSubmit.addEventListener('click', function(e) {
     }
 
     bookData[3].checked = false;
+    if (typeof(Storage) !== 'undefined') {
+        localStorage.clear();
+        localStorage.setItem('library', JSON.stringify(myLibrary));
+    }
     fullRender();
     checkboxUpdate();
     newBookForm.style.visibility = 'collapse';
@@ -96,6 +106,10 @@ function checkboxUpdate() {
             } else {
                 idFilter[0].read = false;
             }
+            if (typeof(Storage) !== 'undefined') {
+                localStorage.clear();
+                localStorage.setItem('library', JSON.stringify(myLibrary));
+            }
         });
     });
 }
@@ -112,6 +126,10 @@ function deleteButtonRender(newBook) {
         let idFilter = myLibrary.filter(book => book.id == dataID);
         let index = myLibrary.indexOf(idFilter[0]);
         myLibrary.splice(index, 1);
+        if (typeof(Storage) !== 'undefined') {
+            localStorage.clear();
+            localStorage.setItem('library', JSON.stringify(myLibrary));
+        }
         fullRender();
     });
 }
