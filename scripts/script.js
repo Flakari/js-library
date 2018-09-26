@@ -6,16 +6,18 @@ let newBookForm = document.querySelector('#new-book-form');
 let addBook = document.querySelector('#add-book');
 let deleteButtonContainer = document.querySelector('#delete-button-container');
 
+class Book {
+    constructor(title, author, pageCount, read, id) {
+        this.title = title;
+        this.author = author;
+        this.pageCount = pageCount;
+        this.read = read;
+        this.id = id;
+    }
+}
+
 let myLibrary = [new Book('Old Man\'s War', 'John Scalzi', 320, false, 2), new Book('Gardens of the Moon', 'Steven Erikson', 712, false, 1), new Book('Game of Thrones', 'George R.R. Martin', 694, true, 0), new Book('','',0,false,-1)];
 let checkboxList = [];
-
-function Book(title, author, pageCount, read, id) {
-    this.title = title;
-    this.author = author;
-    this.pageCount = pageCount;
-    this.read = read;
-    this.id = id;
-}
 
 function addBookToLibrary(newBook) {
     myLibrary.unshift(newBook);
